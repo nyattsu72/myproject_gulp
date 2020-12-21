@@ -1,0 +1,95 @@
+$maxWidth: 1320px;
+$innerWidth: 1100px;
+$maxWidth_SP: 560px;
+$breakPointTab: 840px;
+$breakPointSP: 560px;
+$grayColor: #a4abb0;
+$baseColor: #202037;
+$gradationColor01: #364d6a;
+$gradationColor02: #599dc0;
+$bgBaseColor: #f0f0f0;
+$baseFontJP: YuGothic, "Yu Gothic", "メイリオ", Meiryo, sans-serif;
+$baseFontEn: "Avenir", "Helvetica Neue", "Helvetica", "Arial", Arial;
+
+/* creafix */
+@mixin clearfix() {
+  &:after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+/*font*/
+@mixin rem($size) {
+  font-size: $size + px;
+  font-size: ($size / 16) + rem;
+}
+
+@mixin letterSpacing($trakking) {
+  letter-spacing: $trakking / 1000 + em;
+}
+
+@mixin mvFontsizeVw($size) {
+  font-size: ($size / $winW) * 100 + vw;
+
+  $winW: 1280px; // 画面幅を設定する
+}
+
+@mixin pagination {
+  width: 45px;
+  height: 45px;
+  border: 1px #707070 solid;
+}
+
+/*media query */
+@mixin breakPointTab {
+  @media screen and (max-width: $breakPointTab) {
+    @content;
+  }
+}
+@mixin breakPointSP {
+  @media screen and (max-width: $breakPointSP) {
+    @content;
+  }
+}
+
+/*独自関数*/
+/*小数点を丸める関数*/
+@function decimal-round($number, $digits: 0, $mode: round) {
+  $n: 1;
+  @if type-of($number) != number {
+    @warn '#{ $number } is not a number.';
+    @return $number;
+  }
+  @if type-of($digits) != number {
+    @warn '#{ $digits } is not a number.';
+    @return $number;
+  } @else if not unitless($digits) {
+    @warn '#{ $digits } has a unit.';
+    @return $number;
+  }
+  @if $digits > 0 {
+    @for $i from 1 through $digits {
+      $n: $n * 10;
+    }
+  }
+  @if $mode == round {
+    @return round($number * $n) / $n;
+  } @else if $mode == ceil {
+    @return ceil($number * $n) / $n;
+  } @else if $mode == floor {
+    @return floor($number * $n) / $n;
+  } @else {
+    @warn '#{ $mode } is undefined keyword.';
+    @return $number;
+  }
+}
+
+@function decimal-ceil($number, $digits: 0) {
+  @return decimal-round($number, $digits, ceil);
+}
+
+@function decimal-floor($number, $digits: 0) {
+  @return decimal-round($number, $digits, floor);
+}
