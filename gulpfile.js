@@ -57,9 +57,9 @@ const cssSass = () => {
     )
     .pipe(sassGlob())
     .pipe(sass({ outputStyle: "expanded" }))
-    .pipe(postcss([cssDeclarationSorter({ order: "smacss" })])) //CSSソート
-    .pipe(postcss([autoprefixer()])) //prefixer自動付与
     .pipe(cssmqSort()) //メディアクエリソート
+    .pipe(postcss([autoprefixer()])) //prefixer自動付与
+    .pipe(postcss([cssDeclarationSorter({ order: "smacss" })])) //CSSソート
     .pipe(gulpStylelint({ fix: true }))
     .pipe(sourcemaps.write("/maps")) //ソースマップの出力
     .pipe(dest(destPath.css)) //コンパイル先
@@ -125,7 +125,7 @@ const browserSyncFunc = () => {
   browserSync.init(browserSyncOption);
 };
 const browserSyncOption = {
-  proxy: "http://seki72ko.test", //環境によって変更する
+  proxy: "http://seki72ko.com/", //環境によって変更する
   open: true,
   reloadOnRestart: true,
 };

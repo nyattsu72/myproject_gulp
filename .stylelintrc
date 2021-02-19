@@ -1,0 +1,27 @@
+{
+	extends: [
+    'stylelint-config-recommended',
+    'stylelint-config-recommended-scss',
+  ],
+  "plugins": [
+    "stylelint-scss"
+  ],
+	"rules": {
+		"no-descending-specificity": null,
+		"max-line-length": [
+			300,
+			{
+				"ignore": "non-comments",
+				"ignorePattern": ["/(https?://[0-9,a-z]*.*)|(^description\\:.+)|(^tags\\:.+)/i"],
+        "block-no-empty": true,
+        'color-hex-length': 'short',
+        "string-quotes": "double",
+        "number-leading-zero": "never",
+        "value-list-comma-space-after": "always",
+        "declaration-colon-space-after": "always",
+        "declaration-block-no-duplicate-properties": "true",
+        "indentation": "tab",
+			}
+		]
+	}
+}

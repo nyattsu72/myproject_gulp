@@ -33,7 +33,10 @@
     "imagemin-svgo": "^8.0.0",
     "postcss": "^8.1.10",
     "postcss-sorting": "^6.0.0",
-    "stylelint": "^13.8.0"
+    "stylelint": "^13.10.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-scss": "^3.19.0"
   },
   "browserslist": [
     "defaults",
