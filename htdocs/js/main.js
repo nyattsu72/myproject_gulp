@@ -52,7 +52,7 @@ pageLink.forEach(function (target) {
 if (document.URL.match(/index/)) {
   //mainvisual vh
   let vh = window.innerHeight;
-  document.querySelector(".mainvisual_catch").style.height = `calc(${vh}px - 150px)`;
+  document.querySelector(".mainvisual_catch").style.height = "calc(".concat(vh, "px - 150px)");
   document.addEventListener("DOMContentLoaded", function () {
     gsap.set(".preview_box", {
       width: 0

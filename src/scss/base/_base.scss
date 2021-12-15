@@ -1,14 +1,15 @@
+@use '../global/' as global;
 /*reset*/
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html,
 body {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 h1,
@@ -74,50 +75,51 @@ thead,
 tr,
 th,
 td {
-  margin: 0;
-  padding: 0;
-  border: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
 }
 
 ul,
 ol {
-  list-style: none;
+	list-style: none;
 }
 
 /*base*/
 html {
-  font-size: 62.5%;
+	font-size: 62.5%;
 }
 
 body {
-  position: relative;
-  font-family: $ff-codeJp;
-  font-size: $fs-base;
-  font-weight: $fw-base;
-  color: $clr-text;
-  line-height: $lh-base;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: $clr-bg;
-  overflow-x: hidden;
-  overflow-wrap: break-word;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
+	position: relative;
+	font-family: global.$ff-codeJp;
+	font-size: global.$fs-base;
+	font-weight: global.$fw-base;
+	color: global.$clr-text;
+	line-height: global.$lh-base;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background: global.$clr-bg;
+	overflow-x: hidden;
+	overflow-wrap: break-word;
+	min-height: 100vh;
+	min-height: -webkit-fill-available;
+	letter-spacing: global.lsp(20, 1000);
 }
 
 a {
-  color: inherit;
-  outline: none;
+	color: inherit;
+	outline: none;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
-  border: none;
-  vertical-align: top;
+	max-width: 100%;
+	height: auto;
+	border: none;
+	vertical-align: top;
 }
 
 video {
-  max-width: 100%;
-  height: auto;
+	max-width: 100%;
+	height: auto;
 }
