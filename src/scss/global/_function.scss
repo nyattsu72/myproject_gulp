@@ -1,0 +1,28 @@
+@use 'global/_setting' as var;
+@use 'sass:math';
+@use 'sass:list';
+@use 'sass:meta';
+@use 'sass:string';
+@use 'sass:map';
+
+/*mixin*/
+// メディアクエリー
+@mixin mq($breakpoint: sp) {
+	@media #{map.get(var.$breakpoints, $breakpoint)} {
+		@content;
+	}
+}
+
+@mixin clearfix() {
+	&:after {
+		display: block;
+		clear: both;
+		content: '';
+	}
+}
+
+/*function*/
+// letter-spacing計算
+@function lsp($letter_spacing, $font_size) {
+	@return math.div($letter_spacing, $font_size) * 1em;
+}

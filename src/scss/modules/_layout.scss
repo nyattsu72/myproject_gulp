@@ -1,18 +1,20 @@
+@use '../global/' as global;
+@use 'sass:map';
+
 .l-header {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: map-get($layer, "header");
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: map.get(global.$layer, 'header');
 }
 
 .l-btn-menu {
-  position: fixed;
-  right: 30px;
+	position: fixed;
+	right: 30px;
 }
 
 .l-section {
-  width: 100%;
-  max-width: decimal-ceil($widthInner / $widthCanvas * 100%);
-  margin: 0 auto;
+	width: 100%;
+	margin: 0 auto;
 }

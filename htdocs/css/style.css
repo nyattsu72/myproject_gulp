@@ -144,6 +144,7 @@ body {
 	font-size: 1.6rem;
 	line-height: 1.6;
 	font-family: "Noto Sans JP", sans-serif;
+	letter-spacing: 0.02em;
 	overflow-wrap: break-word;
 }
 
@@ -184,7 +185,7 @@ video {
 	font-weight: 200;
 	font-size: 2.4rem;
 	font-family: "Montserrat", sans-serif;
-	letter-spacing: 0.05em;
+	letter-spacing: lsp(50, 1000);
 }
 
 .header_nav {
@@ -291,11 +292,8 @@ video {
 
 .l-section {
 	width: 100%;
-	max-width: 84%;
 	margin: 0 auto;
 }
-
-/* title */
 
 .section-heading {
 	display: inline-block;
@@ -337,6 +335,14 @@ video {
 	transform: translateX(-50%);
 	background-color: #fff;
 	content: "";
+}
+
+@media (max-width: 1135px) {
+
+.header {
+	display: block;
+}
+
 }
 
 @-webkit-keyframes menu-bar2 {

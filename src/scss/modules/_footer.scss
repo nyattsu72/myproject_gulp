@@ -1,0 +1,7 @@
+@use '../global/' as global;
+
+@include global.mq('tab') {
+	.header {
+		display: block;
+	}
+}
