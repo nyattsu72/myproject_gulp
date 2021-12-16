@@ -13,6 +13,7 @@ const autoprefixer = require('autoprefixer');
 const cleanCSS = require('gulp-clean-css'); // 圧縮
 const rename = require('gulp-rename'); // ファイル名変更
 const sourcemaps = require('gulp-sourcemaps'); // ソースマップ作成
+const webp = require('gulp-webp');
 
 //js babel
 const babel = require('gulp-babel');
@@ -120,6 +121,17 @@ const imgImagemin = () => {
 		.pipe(dest(destPath.img));
 };
 
+const changeWebp = () => {
+	return src(srcPath.img)
+		.pipe(
+			rename((path) => {
+				path.basename += path.extname;
+			})
+		)
+		.pipe(webp())
+		.pipe(dest(destPath.img));
+};
+
 //ローカルサーバー立ち上げ、ファイル監視と自動リロード
 const browserSyncFunc = () => {
 	browserSync.init(browserSyncOption);
@@ -142,9 +154,10 @@ const watchFiles = () => {
 	watch(srcPath.css, series(cssSass, browserSyncReload));
 	watch(srcPath.js, series(jsBabel, browserSyncReload));
 	watch(srcPath.img, series(imgImagemin, browserSyncReload));
+	watch(srcPath.img, series(changeWebp, browserSyncReload));
 };
 
 exports.default = series(
-	series(cssSass, jsBabel, imgImagemin),
+	series(cssSass, jsBabel, imgImagemin, changeWebp),
 	parallel(watchFiles, browserSyncFunc)
 );
