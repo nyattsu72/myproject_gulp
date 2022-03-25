@@ -1,43 +1,48 @@
 @use '../global/' as global;
 
-.section-heading {
-	display: inline-block;
-	font-size: 8rem;
-	color: #fff;
-	position: relative;
-	font-family: global.$ff-codeEn;
-	font-weight: 200;
-	margin-bottom: 80px;
 
-	&::after {
-		content: '';
-		width: 160px;
-		height: 2px;
-		position: absolute;
-		bottom: 0;
-		left: 50%;
-		transform: translateX(-50%);
-		background-color: #fff;
-	}
+/* text */
+.text_center{
+	text-align: center;
 }
 
-.section-heading02 {
-	display: inline-block;
-	font-size: 8rem;
-	color: #00558f;
-	position: relative;
-	font-family: global.$ff-codeEn;
-	font-weight: 200;
-	margin-bottom: 80px;
+.text_right{
+	text-align: right;
+}
 
-	&::after {
-		content: '';
-		width: 160px;
-		height: 2px;
-		position: absolute;
-		bottom: 0;
-		left: 50%;
-		transform: translateX(-50%);
-		background-color: #fff;
+.text_paragraph{
+	margin-top: 1em;
+}
+
+.text_marker{
+	background:linear-gradient(transparent 60%, #FFFF27 60%);
+}
+
+.text_en{
+	font-family: global.$ff-codeEn;
+}
+
+.text_bold{
+	font-weight: 600;
+}
+
+.text_link{
+	color: #0066C0;
+}
+
+.br{
+	&_sp{
+		display: block;
+
+		@include global.mq('pc'){
+			display: none;
+		}
+	}
+	&_pc{
+		display: none;
+
+		@include global.mq('pc'){
+			display: block;
+		}
 	}
 }
