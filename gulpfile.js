@@ -14,6 +14,7 @@ const cleanCSS = require('gulp-clean-css'); // 圧縮
 const rename = require('gulp-rename'); // ファイル名変更
 const sourcemaps = require('gulp-sourcemaps'); // ソースマップ作成
 const webp = require('gulp-webp');
+const pug = require('gulp-pug');
 
 //js babel
 const babel = require('gulp-babel');
@@ -30,7 +31,7 @@ const browserSync = require('browser-sync');
 
 //参照元パス
 const srcPath = {
-	html: 'htdocs/**.html',
+	pug: 'src/pug/**/*.pug',
 	css: 'src/scss/**.scss',
 	js: 'src/js/*.js',
 	img: 'src/images/**/*',
@@ -38,10 +39,20 @@ const srcPath = {
 
 //出力先パス
 const destPath = {
+  pug: 'htdocs/',
 	css: 'htdocs/css/',
 	js: 'htdocs/js/',
 	img: 'htdocs/images/',
 };
+
+//pug
+const htmlPug = () =>{
+  return src(srcPath.pug)
+    .pipe(pug({
+      pretty:true
+    }))
+    .pipe(dest(destPath.pug))
+}
 
 //sass
 const cssSass = () => {
@@ -150,7 +161,7 @@ const browserSyncReload = (done) => {
 
 //ファイル監視
 const watchFiles = () => {
-	watch(srcPath.html, series(cssSass, browserSyncReload));
+	watch(srcPath.pug, series(htmlPug, browserSyncReload));
 	watch(srcPath.css, series(cssSass, browserSyncReload));
 	watch(srcPath.js, series(jsBabel, browserSyncReload));
 	watch(srcPath.img, series(imgImagemin, browserSyncReload));
@@ -158,6 +169,6 @@ const watchFiles = () => {
 };
 
 exports.default = series(
-	series(cssSass, jsBabel, imgImagemin, changeWebp),
+	series(htmlPug,cssSass, jsBabel, imgImagemin, changeWebp),
 	parallel(watchFiles, browserSyncFunc)
 );

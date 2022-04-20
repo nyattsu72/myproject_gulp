@@ -23,6 +23,10 @@
 
 /*function*/
 // letter-spacing計算
+@function rem($px){
+	@return ($px / 16) * 1rem;
+}
+
 @function lsp($letter_spacing, $font_size) {
 	@return math.div($letter_spacing, $font_size) * 1em;
 }
